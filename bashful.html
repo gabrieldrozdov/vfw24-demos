@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bashful</title>
+	<style>
+		/* Import your font file here! */
+		@font-face {
+			font-family: "Bashful";
+			src: url("fonts/GDBashfulVF.ttf");
+		}
+
+		/* Customize your font settings here */
+		body {
+			font-family: "Bashful";
+			font-size: 10vw;
+			line-height: 1em;
+			letter-spacing: -.02em;
+			background-color: black;
+			color: white;
+		}
+
+		.content span {
+			/* Set the default value for your variable axes */
+			font-variation-settings: "BASH" 0;
+
+			/* Customize the speed of the transition here */
+			transition: font-variation-settings .5s;
+
+			/* Find timing functions on easings.net */
+			transition-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+		}
+		
+		.content span:hover {
+			/* Set the variable axes values on hover */
+			font-variation-settings: "BASH" 100;
+
+			/* This is the speed of the transition in */
+			transition: font-variation-settings .1s;
+		}
+
+		/* This is some CSS I wrote to organize the page */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			cursor: crosshair;
+		}
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: center;
+			padding: 20px;
+			width: 100vw;
+			height: 100dvh;
+		}
+		.content {
+			text-align: center;
+		}
+		.content span {
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="content">
+			<!-- Type your text in here! -->
+			im a shy guy im a shy guy im a shy guy im a shy guy im a shy guy im a shy guy im a shy guy im a shy guy im a shy guy im a shy guy im a shy guy im a shy guy im a shy guy im a shy guy im a shy guy im a shy guy
+		</div>
+	</div>
+
+	<!-- This is the JavaScript -->
+	<script>
+		// This code lets every letter have its own variable axis values
+		const container = document.querySelector('.container');
+		const content = document.querySelector('.content');
+		let temp = "";
+		for (let letter of content.innerText) {
+			if (letter == " ") {
+				letter = "<span>&nbsp;</span>";
+			}
+			temp += `<span>${letter}</span>`;
+		}
+		content.innerHTML = temp;
+	</script>
+</body>
+</html>

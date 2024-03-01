@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>PowerPack</title>
+	<style>
+		/* Import your font file here! */
+		@font-face {
+			font-family: "PowerPack";
+			src: url("fonts/GDPowerPackVF.ttf");
+		}
+
+		/* Customize your font settings here */
+		body {
+			font-family: "PowerPack";
+			font-size: 10vw;
+			line-height: 1em;
+			letter-spacing: -.02em;
+			background-color: black;
+			color: white;
+		}
+		/* Customize your animation here */
+		@keyframes power {
+			0% {
+				font-variation-settings: "chrg" 0, "powr" 0;
+			}
+			50% {
+				font-variation-settings: "chrg" 100, "powr" 100;
+			}
+			100% {
+				font-variation-settings: "chrg" 100, "powr" 100;
+			}
+		}
+
+		/* This is some CSS I wrote to organize the page */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			cursor: crosshair;
+		}
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: center;
+			padding: 20px;
+			width: 100vw;
+			height: 100dvh;
+		}
+		.content {
+			text-align: center;
+		}
+		.content span {
+			animation-name: power;
+			animation-timing-function: ease-in-out;
+			animation-direction: alternate;
+			animation-iteration-count: infinite;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="content">
+			<!-- Type your text in here! -->
+			supercharged
+		</div>
+	</div>
+
+	<!-- This is the JavaScript -->
+	<script>
+		// This code lets every letter have its own variable axis values
+		const container = document.querySelector('.container');
+		const content = document.querySelector('.content');
+		let temp = "";
+		for (let letter of content.innerText) {
+			if (letter == " ") {
+				letter = "<span>&nbsp;</span>";
+			}
+			temp += `<span style="animation-delay: -${Math.random()*10}s; animation-duration: ${Math.random()*2+1}s;">${letter}</span>`;
+		}
+		content.innerHTML = temp;
+	</script>
+</body>
+</html>

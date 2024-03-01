@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Mini Mochi</title>
+	<style>
+		/* Import your font file here! */
+		@font-face {
+			font-family: "Mini Mochi";
+			src: url("fonts/GDMiniMochiVF.ttf");
+		}
+
+		/* Customize your font settings here */
+		body {
+			font-family: "Mini Mochi";
+			font-size: 15vw;
+			line-height: .75em;
+			letter-spacing: -.02em;
+			background-color: black;
+			color: white;
+		}
+
+		/* Customize the speed of the transition here */
+		.content span {
+			transition: font-variation-settings .5s;
+
+			/* Find timing functions on easings.net */
+			transition-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+		}
+
+		/* This is some CSS I wrote to organize the page */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: center;
+			padding: 20px;
+			width: 100vw;
+			height: 100dvh;
+		}
+		.content {
+			text-align: center;
+		}
+		.content span {
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="content">
+			<!-- Type your text in here! -->
+			MINIMOCHIMINIMOCHIMINIMOCHIMINIMOCHIMINIMOCHI
+		</div>
+	</div>
+
+	<!-- This is the JavaScript -->
+	<script>
+		// Enter your variable axes and ranges here
+		let variableAxes = {
+			"STCH": [0, 100],
+			"FLAV": [0, 100],
+			"SLCE": [0, 100],
+		}
+
+		// Enter your delay here (in milliseconds)
+		let loopDelay = 500;
+
+		// This code lets every letter have its own variable axis values
+		const container = document.querySelector('.container');
+		const content = document.querySelector('.content');
+		let temp = "";
+		for (let letter of content.innerText) {
+			if (letter == " ") {
+				letter = "<span>&nbsp;</span>";
+			}
+			temp += `<span>${letter}</span>`;
+		}
+		content.innerHTML = temp;
+
+		// This function is a loop that changes the variable axis values of every letter
+		function randomizeLetters() {
+			for (let span of container.querySelectorAll('span')) {
+				let variation = "";
+				let axisNumber = 0;
+				for (let axis of Object.keys(variableAxes)) {
+					let range = variableAxes[axis][1] - variableAxes[axis][0];
+					variation += `"${axis}" ${Math.random()*range + variableAxes[axis][0]}`;
+					axisNumber++;
+					if (axisNumber < Object.keys(variableAxes).length) {
+						variation += ", ";
+					}
+				}
+				span.style.fontVariationSettings = variation;
+			}
+		}
+		setInterval(randomizeLetters, loopDelay);
+		randomizeLetters();
+	</script>
+</body>
+</html>

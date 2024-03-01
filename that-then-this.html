@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>That Then This</title>
+	<style>
+		/* Import your font file here! */
+		@font-face {
+			font-family: "That Then This";
+			src: url("fonts/GDThatThenThisVF.ttf");
+		}
+
+		/* Customize your font settings here */
+		body {
+			font-family: "That Then This";
+			font-size: 10vw;
+			line-height: 1em;
+			letter-spacing: -.02em;
+			background-color: black;
+			color: white;
+
+			/* Customize your animation here */
+			animation-name: dance;
+			animation-duration: 2s;
+			animation-timing-function: ease-in-out; /* find more on easings.net */
+			animation-iteration-count: infinite;
+			animation-direction: alternate;
+		}
+		@keyframes dance {
+			0% {
+				font-variation-settings: "VARI" 0, "DIST" 0;
+			}
+			25% {
+				font-variation-settings: "VARI" 0, "DIST" 100;
+			}
+			50% {
+				font-variation-settings: "VARI" 100, "DIST" 100;
+			}
+			75% {
+				font-variation-settings: "VARI" 100, "DIST" 0;
+			}
+			100% {
+				font-variation-settings: "VARI" 0, "DIST" 0;
+			}
+		}
+
+		/* This is some CSS I wrote to organize the page */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			cursor: crosshair;
+		}
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: center;
+			padding: 20px;
+			width: 100vw;
+			height: 100dvh;
+		}
+		.content {
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="content">
+			<!-- Type your text in here! -->
+			watch me dance
+		</div>
+	</div>
+</body>
+</html>
